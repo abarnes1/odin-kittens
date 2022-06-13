@@ -1,3 +1,5 @@
 <p>
-  <%= kitten.id %> | <%= kitten.name %>
+  <%= kitten.id %> | <%= kitten.name %> | 
+  <%= link_to 'Edit', edit_kitten_path(kitten) %> | 
+  <%= link_to 'Del', kitten_path(kitten), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </p>

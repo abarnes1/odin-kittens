@@ -18,6 +18,32 @@ class KittensController < ApplicationController
     end
   end
 
+  def edit
+    @kitten = Kitten.find(params[:id])
+  end
+
+  def update
+    @kitten = Kitten.find(params[:id])
+
+    if @kitten.update(kitten_params)
+      redirect_to kittens_path
+    else
+      flash.now[:alert] = 'Update failed.'
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @kitten = Kitten.find(params[:id])
+    
+    if @kitten.destroy
+      redirect_to kittens_path, status: :see_other 
+    else
+      flash.now[:alert] = 'Delete failed.'
+      render :index, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def kitten_params
