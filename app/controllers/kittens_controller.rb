@@ -11,6 +11,7 @@ class KittensController < ApplicationController
     @kitten = Kitten.new(kitten_params)
 
     if @kitten.save
+      flash[:notice] = 'Kitten created.'
       redirect_to kittens_path
     else
       flash.now[:alert] = 'Save failed.'
@@ -26,6 +27,7 @@ class KittensController < ApplicationController
     @kitten = Kitten.find(params[:id])
 
     if @kitten.update(kitten_params)
+      flash[:notice] = 'Kitten updated.'
       redirect_to kittens_path
     else
       flash.now[:alert] = 'Update failed.'
@@ -35,8 +37,9 @@ class KittensController < ApplicationController
 
   def destroy
     @kitten = Kitten.find(params[:id])
-    
+
     if @kitten.destroy
+      flash[:notice] = 'Kitten deleted, you monster.'
       redirect_to kittens_path, status: :see_other 
     else
       flash.now[:alert] = 'Delete failed.'
