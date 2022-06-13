@@ -1,0 +1,17 @@
+<section class='section'>
+  <h1 class="is-size-3">kittens#new</h1>
+</section>
+
+<section class="section py-0">
+  <% if @kitten.errors %>
+    <% @kitten.errors.each do |error| %>
+      <p class='has-text-danger'>
+        <%= error.full_message %>
+      </p>
+    <% end %>
+  <% end %>
+</section>
+
+<section class='section pt-0'>
+  <%= render partial: 'form', locals: { kitten: @kitten } %>
+</section>

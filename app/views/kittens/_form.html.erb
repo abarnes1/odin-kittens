@@ -1,0 +1,36 @@
+<div class="columns">
+  <div class="column is-4">
+    <%= form_with model: kitten do |form| %>
+      <div class="field">
+        <%= form.label :name, class: 'label' %>
+        <div class="control">
+          <%= form.text_field :name, class: 'input' %>
+        </div>
+      </div>
+    
+      <div class="field">
+        <%= form.label :age, class: 'label' %>
+        <div class="control">
+          <%= form.number_field :age, in: 0..20, class: 'input' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :cuteness, class: 'label' %>
+        <div class="control">
+          <%= form.number_field :cuteness, in: 1..10, class: 'input' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :softness, class: 'label' %>
+        <div class="control">
+          <%= form.number_field :softness, in: 1..10, class: 'input' %>
+        </div>
+      </div>
+
+      <br>
+      <%= form.submit class: 'button' %>
+    <% end %>
+  </div>
+</div>
